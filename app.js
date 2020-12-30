@@ -8,8 +8,10 @@ const  mongoose = require('mongoose');
 //Переменная app результат работы функции express(), то есть это наш будущий сервер
 const app = express();
 
-
+app.use(express.json({ extended: true}));
 app.use('/api/auth', require('./routes/auth.routes'));
+app.use('/api/link', require('./routes/link.routes'));
+
 const PORT = config.get('port') || 4400;
 
 async function start() {
